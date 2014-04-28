@@ -1,0 +1,464 @@
+1
+00:00:00,000 --> 00:00:03,990
+In the last movie we learned about merge conflicts, and we actually created one in our
+
+2
+00:00:04,000 --> 00:00:05,990
+Explore California site.
+
+3
+00:00:06,000 --> 00:00:09,990
+That's where we left things off. We left things in the middle of a merge, the merge has not
+
+4
+00:00:10,000 --> 00:00:14,990
+yet been completed, and Git wants us to resolve these conflicts before it will go ahead and
+
+5
+00:00:15,000 --> 00:00:15,990
+complete the merge.
+
+6
+00:00:16,000 --> 00:00:18,990
+What I want us to look at in this movie is how we go about resolving these conflicts.
+
+7
+00:00:19,000 --> 00:00:22,990
+You've three choices as to what to do to resolve these conflicts.
+
+8
+00:00:23,000 --> 00:00:25,990
+First, you can simply abort the merge.
+
+9
+00:00:26,000 --> 00:00:29,990
+You can say oops! That was not what I wanted to do, I was not anticipating all of these
+
+10
+00:00:30,000 --> 00:00:30,990
+problems, get me out of here.
+
+11
+00:00:31,000 --> 00:00:31,990
+We'll see how to do that.
+
+12
+00:00:32,000 --> 00:00:35,990
+The second is that we can resolve the conflicts manually.
+
+13
+00:00:36,000 --> 00:00:38,990
+Most of the time this is what you're going to do, and I think especially while you're
+
+14
+00:00:39,000 --> 00:00:42,990
+learning how to resolve these conflicts, I think this is the one that you want to do.
+
+15
+00:00:43,000 --> 00:00:45,990
+And then the third one is that you can use a merge tool.
+
+16
+00:00:46,000 --> 00:00:49,990
+There're number of tools out there that will help you to resolve these kinds of conflicts.
+
+17
+00:00:50,000 --> 00:00:53,990
+Now I'm not going to teach you any specific one of those, because there are so many, and
+
+18
+00:00:54,000 --> 00:00:58,990
+my advice would not be go to a Merge tool until you've spent some time resolving them manually.
+
+19
+00:00:59,000 --> 00:01:02,990
+So that you have an idea what the tools are doing for you, and you won't be entirely dependent
+
+20
+00:01:03,000 --> 00:01:05,990
+on them in order to resolve merges.
+
+21
+00:01:06,000 --> 00:01:07,990
+So let's look at the first one of these, aborting the merge.
+
+22
+00:01:08,000 --> 00:01:14,990
+To abort the merge, while we're in this state, all we have to do is say, git merge --abort. That's it.
+
+23
+00:01:15,000 --> 00:01:19,990
+Now notice I'm no longer in my MERGING state, git status, everything is clean, and if I
+
+24
+00:01:20,000 --> 00:01:25,990
+do git log --oneline on my master branch, you can see that it did not bring anything
+
+25
+00:01:26,000 --> 00:01:31,990
+else. This is the state of things right before the merge. So nothing got merged, I simply aborted it.
+
+26
+00:01:32,000 --> 00:01:36,990
+Now let's do our merge again, git merge text_ edits, once again it did the same thing, created
+
+27
+00:01:37,000 --> 00:01:38,990
+the same conflicts for us.
+
+28
+00:01:39,000 --> 00:01:42,990
+This time we're going to soldier on, and we're going to resolve the conflicts manually, so
+
+29
+00:01:43,000 --> 00:01:45,990
+the problem was in mission.html.
+
+30
+00:01:46,000 --> 00:01:47,990
+So we can see that again, git status shows us that.
+
+31
+00:01:48,000 --> 00:01:54,990
+What we need to do is we need to resolve the conflicts by hand in mission.html, and then
+
+32
+00:01:55,000 --> 00:01:56,990
+add and commit the result.
+
+33
+00:01:57,000 --> 00:01:59,990
+So that's what we're going to do. Let's open up mission.html.
+
+34
+00:02:00,000 --> 00:02:04,990
+Now we saw before that the markers here, this arrows pointing to the left, going down to
+
+35
+00:02:05,000 --> 00:02:10,990
+the equal sign all way down here to the arrows pointing to the right, is how we know where
+
+36
+00:02:11,000 --> 00:02:10,990
+the conflicts are.
+
+37
+00:02:11,000 --> 00:02:13,990
+If there had been several of these conflicts it would've marked each one of them.
+
+38
+00:02:14,000 --> 00:02:17,990
+Maybe there's one at the top of the document, one in the middle, one at the bottom, and each
+
+39
+00:02:18,000 --> 00:02:18,990
+one would be a section.
+
+40
+00:02:19,000 --> 00:02:21,990
+So every time there's a problem, you want to just search your document looking to see
+
+41
+00:02:22,000 --> 00:02:23,990
+where the first one of these is.
+
+42
+00:02:24,000 --> 00:02:29,990
+So the best thing to do is here at the top of your document, you do a find and find three of those.
+
+43
+00:02:30,000 --> 00:02:29,990
+So there we go.
+
+44
+00:02:30,000 --> 00:02:31,990
+Now I know I'm right here at the first commit.
+
+45
+00:02:32,000 --> 00:02:35,990
+Now you can go through these line by line and try and sort it all out.
+
+46
+00:02:36,000 --> 00:02:38,990
+You also could do some research here. You can say, all right, let's go back, and let's
+
+47
+00:02:39,000 --> 00:02:45,990
+remind ourselves if we do git log --oneline, let's just do 3 of those.
+
+48
+00:02:46,000 --> 00:02:50,990
+All right, here's that commit. What was that commit all about? Let's see, git show, let's
+
+49
+00:02:51,000 --> 00:02:51,990
+take a look at that commit.
+
+50
+00:02:52,000 --> 00:02:54,990
+Okay, and you can look through there, and you can see oh, all right, I was doing the curly
+
+51
+00:02:55,000 --> 00:02:57,990
+quotes here, that's really what changed was the curly quotes.
+
+52
+00:02:58,000 --> 00:03:02,990
+So I know that what I need to do is I need to take the version that is in text_edits,
+
+53
+00:03:03,000 --> 00:03:05,990
+this version, there're lot of text_edits in there.
+
+54
+00:03:06,000 --> 00:03:09,990
+So I'm just going to take that and assume that that's the right one, so what I'm going
+
+55
+00:03:10,000 --> 00:03:13,990
+to do is I'm going to go through and make sure that I get all of the curly quotes in there.
+
+56
+00:03:14,000 --> 00:03:16,990
+So let's do--we'll take our single quotes, and let's come down here and look for single
+
+57
+00:03:17,000 --> 00:03:23,990
+quotes that need to be changed, and here's another one, and I am not sure if I've got
+
+58
+00:03:24,000 --> 00:03:30,990
+them all or not, but then I know I need to change this one, this is left double quote, this one is right double quote.
+
+59
+00:03:31,000 --> 00:03:35,990
+Okay, so that looks pretty good, oh, here's another one, California's people.
+
+60
+00:03:36,000 --> 00:03:41,990
+Okay, so now I have all of the changes in the text_edits version, this is the one I want
+
+61
+00:03:42,000 --> 00:03:46,990
+to keep, so I need to actually remove this from the document.
+
+62
+00:03:47,000 --> 00:03:51,990
+I'm now going to also remove the lines with the equal signs, come down here and remove
+
+63
+00:03:52,000 --> 00:03:53,990
+the ending arrows as well.
+
+64
+00:03:54,000 --> 00:03:59,990
+So now, the document is a regular HTML document, it has all of the changes in there.
+
+65
+00:04:00,000 --> 00:04:03,990
+Let's save it, and let's go ahead and just open up Firefox and then reload the page.
+
+66
+00:04:04,000 --> 00:04:07,990
+All right, so you'll want to inspect it and make sure that it all looks good, make sure that
+
+67
+00:04:08,000 --> 00:04:11,990
+you're completely happy with the results, that the merge conflict has been resolved
+
+68
+00:04:12,000 --> 00:04:12,990
+to your satisfaction.
+
+69
+00:04:13,000 --> 00:04:17,990
+And once you're completely happy with it and all of the changes have been made, save it and close it.
+
+70
+00:04:18,000 --> 00:04:22,990
+We'll come back over here, and we need to tell it that it needs to add mission, git
+
+71
+00:04:23,000 --> 00:04:25,990
+add mission.html.
+
+72
+00:04:26,000 --> 00:04:29,990
+Now git status, shows that it is ready to be committed, we're ready to do the commit.
+
+73
+00:04:30,000 --> 00:04:32,990
+Now we know how to do a commit, git commit.
+
+74
+00:04:33,000 --> 00:04:34,990
+Normally we'd put a message after it.
+
+75
+00:04:35,000 --> 00:04:38,990
+You can put a message if you want to provide the commit message, but you don't have to.
+
+76
+00:04:39,000 --> 00:04:43,990
+When you're in the middle of a merge, it has a standard default message that it would use.
+
+77
+00:04:44,000 --> 00:04:47,990
+So just git commit by itself, and it'll use that default message.
+
+78
+00:04:48,000 --> 00:04:51,990
+So git commit, hit Return, it in this case popped up and asked me, I'm going to remove
+
+79
+00:04:52,000 --> 00:04:55,990
+this list of conflicts here because those are gone now, and then I'll just save that,
+
+80
+00:04:56,000 --> 00:04:59,990
+close it, and it says, all right, Merge branch 'text_edits'.
+
+81
+00:05:00,000 --> 00:05:02,990
+Now if we do git status, we don't have anything in there.
+
+82
+00:05:03,000 --> 00:05:04,990
+Let's do git log --oneline.
+
+83
+00:05:05,000 --> 00:05:08,990
+Let's look at just the last 3, or I'll do the last 4.
+
+84
+00:05:09,000 --> 00:05:13,990
+Now we see we have our merge in there, it has that merge commit, and if we ask it git branch
+
+85
+00:05:14,000 --> 00:05:19,990
+--merged, it does list text_edits as being fully merged into the master branch.
+
+86
+00:05:20,000 --> 00:05:21,990
+So that's it, that's the steps.
+
+87
+00:05:22,000 --> 00:05:26,990
+You open up the files that have a conflict, find the spot where there are problems, manually
+
+88
+00:05:27,000 --> 00:05:28,990
+fix them, do that for all the files that had a conflict.
+
+89
+00:05:29,000 --> 00:05:32,990
+If there were 20 files that had conflicts, you'll do it for all 20 of them.
+
+90
+00:05:33,000 --> 00:05:37,990
+Then add those files to the staging index, and when you're ready git commit will complete
+
+91
+00:05:38,000 --> 00:05:42,990
+the merge and all those merge conflicts will be resolved.
+
+92
+00:05:43,000 --> 00:05:44,990
+One last thing I want to show you, if you remember I told you that there was this nice
+
+93
+00:05:45,000 --> 00:05:49,990
+future in git log where we could use --graph, git log --graph, and we'll use a couple of
+
+94
+00:05:50,000 --> 00:05:52,990
+other options; --oneline, --all, -decorate, here we are.
+
+95
+00:05:53,000 --> 00:05:58,990
+So if we use all of these together, look what we get. We get a nice showing of the different
+
+96
+00:05:59,000 --> 00:05:59,990
+branches and what happened.
+
+97
+00:06:00,000 --> 00:06:01,990
+Here's the shorten_title branch.
+
+98
+00:06:02,000 --> 00:06:02,990
+You can see where it got folded back in.
+
+99
+00:06:03,000 --> 00:06:04,990
+Here's our merge commit right here that does that.
+
+100
+00:06:05,000 --> 00:06:09,990
+You see, this was a fast-forward one for the seo_title, so it doesn't branch out, it doesn't
+
+101
+00:06:10,000 --> 00:06:11,990
+need this merge commit here.
+
+102
+00:06:12,000 --> 00:06:15,990
+And then we've merged this one back in here, so you can see text_edits is still at this
+
+103
+00:06:16,000 --> 00:06:19,990
+point in time and the HEAD and master have this merge commit in them as well.
+
+104
+00:06:20,000 --> 00:06:23,990
+So it's nice because it gives you a graphical representation of what you've been doing with
+
+105
+00:06:24,000 --> 00:06:25,990
+all of your branching and merging.
+
+106
+00:06:26,000 --> 00:06:28,990
+Now of course, I mentioned there was a third option which is that you could use a merge
+
+107
+00:06:29,000 --> 00:06:33,990
+tool when you're in that state where you're in between merges, and it hasn't been resolved,
+
+108
+00:06:34,000 --> 00:06:40,990
+you could type git mergetool and then --tool= and then the name of the tool that you want.
+
+109
+00:06:41,000 --> 00:06:44,990
+And the Help will show you all of the different tools that you can use, just typing it by itself
+
+110
+00:06:45,000 --> 00:06:47,990
+will show you all of the different candidates that you could use there.
+
+111
+00:06:48,000 --> 00:06:50,990
+So you could go and look up how these work, see if there's one that you like or feel comfortable
+
+112
+00:06:51,000 --> 00:06:55,990
+with it, and you can also add that to your git config file if you want to always use a certain tool.
+
+113
+00:06:56,000 --> 00:06:59,990
+Again, I'm not going to show you any specific one of these, I want you to really stick with
+
+114
+00:07:00,000 --> 00:07:01,990
+the basics of resolving them manually first.
+
+115
+00:07:02,000 --> 00:07:04,990
+It's a more advanced thing to start using these merge tools.
+
+116
+00:07:05,000 --> 00:07:15,000
+
+

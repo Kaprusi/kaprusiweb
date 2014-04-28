@@ -2,24 +2,7 @@
 00:00:00,000 --> 00:00:03,990
 In the previous chapters we saw that git does a really good job of noticing new
 
-2
-00:00:04,000 --> 00:00:07,990
-files as well as changes to existing files in our working directory.
 
-3
-00:00:08,000 --> 00:00:11,990
-In fact, as soon as we added a new file to our working directory Git noticed and
-
-4
-00:00:12,000 --> 00:00:14,990
-added it to the list of untracked files.
-
-5
-00:00:15,000 --> 00:00:18,990
-So, for example, if I take this tempfile.txt and drop it into my
-
-6
-00:00:19,000 --> 00:00:23,990
 project directory, I can say git status and right away git recognizes
 
 7

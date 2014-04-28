@@ -1,0 +1,400 @@
+1
+00:00:00,000 --> 00:00:04,990
+In this movie I want us to understand the difference between fast-forward merges and real merges.
+
+2
+00:00:05,000 --> 00:00:07,990
+When I first gave you an example of what a merge looks like,
+
+3
+00:00:08,000 --> 00:00:10,990
+I said that it looked something like this, and then we made a merge commit that brought
+
+4
+00:00:11,000 --> 00:00:15,990
+those two branches back together and did it with a new commit.
+
+5
+00:00:16,000 --> 00:00:18,990
+But that's not what actually happened in the last movie when we did our first merge, and
+
+6
+00:00:19,000 --> 00:00:24,990
+the reason why is because this isn't really representative of the state of our two branches at that time.
+
+7
+00:00:25,000 --> 00:00:26,990
+We hadn't made additional changes to master yet.
+
+8
+00:00:27,000 --> 00:00:29,990
+It actually looks something more like this.
+
+9
+00:00:30,000 --> 00:00:34,990
+So we had made our branch, we'd made another commit on that branch, but we had not make
+
+10
+00:00:35,000 --> 00:00:38,990
+any changes to master, as a result, it did a fast-forward merge.
+
+11
+00:00:39,000 --> 00:00:43,990
+You may or may not have noticed, but it actually came up and told us that when we did the merge.
+
+12
+00:00:44,000 --> 00:00:47,990
+What happens is when git goes to do a merge, it takes the thing that you're merging in,
+
+13
+00:00:48,000 --> 00:00:51,990
+and it starts at the end of it, and it looks back at all of the ancestors, all the way
+
+14
+00:00:52,000 --> 00:00:52,990
+back up to the beginning.
+
+15
+00:00:53,000 --> 00:00:58,990
+So in our example here, it starts with ba8ce and then goes to 534de, all the back to get
+
+16
+00:00:59,000 --> 00:01:02,990
+to 84c46a, all the way down the chain.
+
+17
+00:01:03,000 --> 00:01:08,990
+And along the way, it looks to see whether it has the HEAD pointer of the current master branch.
+
+18
+00:01:09,000 --> 00:01:12,990
+In our case, the HEAD pointer was pointing at the commit where the branch was made, no
+
+19
+00:01:13,000 --> 00:01:14,990
+movement had been made.
+
+20
+00:01:15,000 --> 00:01:18,990
+If it does that, if in the chain of ancestors it sees the HEAD, it says oh, I'm safe to
+
+21
+00:01:19,000 --> 00:01:20,990
+do a fast-forward merge.
+
+22
+00:01:21,000 --> 00:01:25,990
+I don't need to do that fancy merging and make a new commit, instead what I can actually
+
+23
+00:01:26,000 --> 00:01:31,990
+do is I can just move that commit up into my timeline and move the HEAD along to it.
+
+24
+00:01:32,000 --> 00:01:36,990
+Now revise_navigation also points to the same thing, they both point to ba8ce.
+
+25
+00:01:37,000 --> 00:01:43,990
+There was no need to make a new commit. You could just fast-forward along the chain and merge that way.
+
+26
+00:01:44,000 --> 00:01:49,990
+So we know that that's true, because we can do git log seo_title --oneline, and then let's
+
+27
+00:01:50,000 --> 00:01:52,990
+just look at 3 of those lines.
+
+28
+00:01:53,000 --> 00:01:58,990
+Now notice that the top commit here dc9c83c, that's the thing that had changed before in
+
+29
+00:01:59,000 --> 00:02:01,990
+seo_title, that's what we merged in to master.
+
+30
+00:02:02,000 --> 00:02:06,990
+So let's take a look now at master.
+
+31
+00:02:07,000 --> 00:02:11,990
+See the same commits here, it's got the same SHA, it's the exact same object stored in Git.
+
+32
+00:02:12,000 --> 00:02:16,990
+It did not make a new commit in order to merge these two together, it did a fast-forward.
+
+33
+00:02:17,000 --> 00:02:19,990
+Now there are a couple of options with merge that are related to the fast-forward.
+
+34
+00:02:20,000 --> 00:02:27,990
+The first is the no-ff option so that would be git merge --no-ff and then whatever branch
+
+35
+00:02:28,000 --> 00:02:28,990
+you were trying to merge.
+
+36
+00:02:29,000 --> 00:02:33,990
+The no-ff option forces Git to create a merge commit anyway.
+
+37
+00:02:34,000 --> 00:02:37,990
+It says, don't do a fast-forward, make a new commit with the commit message anyway.
+
+38
+00:02:38,000 --> 00:02:40,990
+And the main reason you'd want to do this is if you wanted some kind of documentation
+
+39
+00:02:41,000 --> 00:02:43,990
+of the fact that you did do this merge.
+
+40
+00:02:44,000 --> 00:02:48,990
+You didn't want it to just quietly do it, you wanted it to sort of make some noise in your git log.
+
+41
+00:02:49,000 --> 00:02:51,990
+The other option you should know about is the ff-only option.
+
+42
+00:02:52,000 --> 00:02:57,990
+Don't get those confused, no-ff says don't do a fast-forward, ff-only says do the merge
+
+43
+00:02:58,000 --> 00:03:00,990
+only if you can do a fast-forward.
+
+44
+00:03:01,000 --> 00:03:03,990
+If you can't do a fast- forward merge, then just abort.
+
+45
+00:03:04,000 --> 00:03:05,990
+Don't try and do it at all just exit.
+
+46
+00:03:06,000 --> 00:03:07,990
+So we won't do either one of those now, but those are useful options to know.
+
+47
+00:03:08,000 --> 00:03:14,990
+All right, so now as a contrast, let's try an example of a true merge or a non-fast-forward merge.
+
+48
+00:03:15,000 --> 00:03:19,990
+Let's take a look at our branches, so we've already merged in our seo_title branch.
+
+49
+00:03:20,000 --> 00:03:23,990
+What I want to do is I want to merge in our shorten_title branch and make those changes.
+
+50
+00:03:24,000 --> 00:03:27,990
+Now if we were just to merge it in the way that we did before, git merge shorten_title,
+
+51
+00:03:28,000 --> 00:03:30,990
+it would do a fast-forward merge.
+
+52
+00:03:31,000 --> 00:03:34,990
+Why is that? Well, it's because the only object that's different between them is the one commit
+
+53
+00:03:35,000 --> 00:03:36,990
+now that master doesn't have.
+
+54
+00:03:37,000 --> 00:03:39,990
+There were two commits; the master was missing before, now it's only missing one, and it
+
+55
+00:03:40,000 --> 00:03:42,990
+would just fast-forward one more time.
+
+56
+00:03:43,000 --> 00:03:46,990
+Instead, we need to make it so that it's non-fast- forward, and the way that we do that is we need another
+
+57
+00:03:47,000 --> 00:03:48,990
+commit on master.
+
+58
+00:03:49,000 --> 00:03:53,990
+If there's another commit on master, then it'll no longer be able to just fast-forward,
+
+59
+00:03:54,000 --> 00:03:59,990
+because now HEAD will have moved to a new commit that is not in the shorten_title branch.
+
+60
+00:04:00,000 --> 00:03:59,990
+So let's try that.
+
+61
+00:04:00,000 --> 00:04:03,990
+You want to make sure you're on your master branch and then let's edit our contact.html,
+
+62
+00:04:04,000 --> 00:04:10,990
+and you see it says Export California: Contact Us, let's take out the us, so it's just Contact.
+
+63
+00:04:11,000 --> 00:04:18,990
+Close it up, clear it, git status, so we have our contact file there, git add contact.html,
+
+64
+00:04:19,000 --> 00:04:26,990
+git commit -m and "Edit contact.html title".
+
+65
+00:04:27,000 --> 00:04:32,990
+Okay, so now we've made our commit, git log --oneline, and let's just look at 3, so there it is.
+
+66
+00:04:33,000 --> 00:04:37,990
+Now we have a new commit that comes after this dc9 commit, so git log for the shorten_title
+
+67
+00:04:38,000 --> 00:04:41,990
+branch, so let's just take a look that one real quick.
+
+68
+00:04:42,000 --> 00:04:46,990
+Notice now it has that commit here, but then there are two commits that come after it.
+
+69
+00:04:47,000 --> 00:04:51,990
+So we've got a common ancestor, but right now HEAD is pointing here, and it's not one
+
+70
+00:04:52,000 --> 00:04:54,990
+of the ancestors of the shorten_title branch.
+
+71
+00:04:55,000 --> 00:04:56,990
+So it won't be a fast-forward merge, it'll be a true merge.
+
+72
+00:04:57,000 --> 00:04:58,990
+The process is the same though.
+
+73
+00:04:59,000 --> 00:05:02,990
+We just say git merge shorten_title.
+
+74
+00:05:03,000 --> 00:05:06,990
+Now Git popped up, and it asks me to provide a commit message here, that's because I had
+
+75
+00:05:07,000 --> 00:05:10,990
+configured it to have TextMate as my default editor. It may have popped you into a different
+
+76
+00:05:11,000 --> 00:05:15,990
+editor, or it can be configured so that it doesn't give you the opportunity to edit it, that
+
+77
+00:05:16,000 --> 00:05:20,990
+it just goes ahead and makes this commit with this commit message, Merge branch shorten_title.
+
+78
+00:05:21,000 --> 00:05:23,990
+All of these lines are going to get ignored and left out of the commit message.
+
+79
+00:05:24,000 --> 00:05:28,990
+So I'm going to go ahead and accept this, so I'm just going to hit Save and close it,
+
+80
+00:05:29,000 --> 00:05:32,990
+and it says, Merge made by the recursive strategy.
+
+81
+00:05:33,000 --> 00:05:36,990
+So merge has different strategies for merging, recursive is typically the one that you're
+
+82
+00:05:37,000 --> 00:05:39,990
+going to see there, and it figured out how to make a merge between the two.
+
+83
+00:05:40,000 --> 00:05:43,990
+If you take look at the log for the master branch now, you'll see that we've a have a
+
+84
+00:05:44,000 --> 00:05:48,990
+new commit, Merge branch shorten_title that comes after that one, and that is the
+
+85
+00:05:49,000 --> 00:05:51,990
+commit that ties these two items back in together.
+
+86
+00:05:52,000 --> 00:05:57,990
+And sure enough, if we take a look over here, our contact.html page is what we would expect.
+
+87
+00:05:58,000 --> 00:06:01,990
+And if we take a look at our index.html page, it is our shorter title here as well.
+
+88
+00:06:02,000 --> 00:06:07,990
+Now may be wondering, what about the fact that the index.html was different in the master branch?
+
+89
+00:06:08,000 --> 00:06:12,990
+Well, that might at first seem like it's a conflict between the two, but it's not, because
+
+90
+00:06:13,000 --> 00:06:18,990
+the change to shorten_title branch was made after that. It has that as an ancestor, so
+
+91
+00:06:19,000 --> 00:06:22,990
+it was able to resolve it, it was able to say, oh I see, later that thing was changed. There's
+
+92
+00:06:23,000 --> 00:06:25,990
+a snapshot that addresses that change.
+
+93
+00:06:26,000 --> 00:06:28,990
+So it wasn't any kind of conflict, the same way that it wasn't a conflict when we did
+
+94
+00:06:29,000 --> 00:06:29,990
+our fast-forward merge.
+
+95
+00:06:30,000 --> 00:06:33,990
+So hopefully that it gives you a better idea of the two ways that Git can handle merges, either
+
+96
+00:06:34,000 --> 00:06:39,990
+by fast-forward or by doing a real merge, and it's pretty good at figuring out how to merge things in.
+
+97
+00:06:40,000 --> 00:06:43,990
+However, sometimes there are merge conflicts. Sometimes there are problems that Git can't
+
+98
+00:06:44,000 --> 00:06:46,990
+solve on its own, and it needs you to resolve them, and that's what we're going to look
+
+99
+00:06:47,000 --> 00:06:48,990
+at in the next couple of movies.
+
+100
+00:06:49,000 --> 00:06:59,000
+
+
