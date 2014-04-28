@@ -1,0 +1,492 @@
+1
+00:00:00,000 --> 00:00:03,990
+In the previous chapters we saw that git does a really good job of noticing new
+
+2
+00:00:04,000 --> 00:00:07,990
+files as well as changes to existing files in our working directory.
+
+3
+00:00:08,000 --> 00:00:11,990
+In fact, as soon as we added a new file to our working directory Git noticed and
+
+4
+00:00:12,000 --> 00:00:14,990
+added it to the list of untracked files.
+
+5
+00:00:15,000 --> 00:00:18,990
+So, for example, if I take this tempfile.txt and drop it into my
+
+6
+00:00:19,000 --> 00:00:23,990
+project directory, I can say git status and right away git recognizes
+
+7
+00:00:24,000 --> 00:00:24,990
+this is an untracked file.
+
+8
+00:00:25,000 --> 00:00:29,990
+But what if this is in fact a temporary file that we don't care about or what if
+
+9
+00:00:30,000 --> 00:00:33,990
+it's a log file that's constantly changing, git would constantly be prompting us
+
+10
+00:00:34,000 --> 00:00:37,990
+to commit those changes to the repository. Instead, what we really want is a way
+
+11
+00:00:38,000 --> 00:00:42,990
+to tell Git just ignore the files altogether, that's what we're going to learn
+
+12
+00:00:43,000 --> 00:00:44,990
+how to do in this chapter.
+
+13
+00:00:45,000 --> 00:00:47,990
+To tell Git which files it ought to ignore, we're going to create a special file in the root of
+
+14
+00:00:48,000 --> 00:00:50,990
+our project, in the root of the working directory.
+
+15
+00:00:51,000 --> 00:00:55,990
+And that file is going to be called .gitignore, so it's all run together, no
+
+16
+00:00:56,000 --> 00:00:56,990
+spaces or punctuation except for the Period
+
+17
+00:00:57,000 --> 00:01:01,990
+at the beginning, .gitignore this file is going to provide Git with a set
+
+18
+00:01:02,000 --> 00:01:05,990
+of rules that it can use to know which files to use for commits and which
+
+19
+00:01:06,000 --> 00:01:06,990
+ones should be ignored.
+
+20
+00:01:07,000 --> 00:01:11,990
+Those rules can be very simple, just a list of files one for each line or we
+
+21
+00:01:12,000 --> 00:01:15,990
+can get little fancier, and you some very basic regular expressions.
+
+22
+00:01:16,000 --> 00:01:19,990
+We can use the Asterisk, the Question Mark, a bracket of characters, a
+
+23
+00:01:20,000 --> 00:01:21,990
+character set, or a range like 0-9.
+
+24
+00:01:22,000 --> 00:01:27,990
+So it's really pretty limited, we just have some basic wildcards that we can use.
+
+25
+00:01:28,000 --> 00:01:32,990
+We can also negate expressions by putting an exclamation point in them.
+
+26
+00:01:33,000 --> 00:01:37,990
+So, for example, we could say ignore any file that ends in .php. We're using the
+
+27
+00:01:38,000 --> 00:01:42,990
+asterisk wildcard for one or more characters, so one or more characters
+
+28
+00:01:43,000 --> 00:01:48,990
+ending in .php will get ignored but don't ignore index.php.
+
+29
+00:01:49,000 --> 00:01:52,990
+Don't let it confuse you this sort of a double-negative, we're talking about not
+
+30
+00:01:53,000 --> 00:01:55,990
+ignoring things, that means these would be tracked.
+
+31
+00:01:56,000 --> 00:02:01,990
+So files ending in .php don't get tracked, but index.php does get tracked.
+
+32
+00:02:02,000 --> 00:02:05,990
+And you can tell to ignore all files in a directory by just having a trailing
+
+33
+00:02:06,000 --> 00:02:10,990
+slash at the end, and that will tell that all files in this directory should be ignored.
+
+34
+00:02:11,000 --> 00:02:15,990
+If you want to add comments to the file, you can start those with the Pound or
+
+35
+00:02:16,000 --> 00:02:19,990
+Hash sign at the beginning, and blank lines will just be basically skipped.
+
+36
+00:02:20,000 --> 00:02:20,990
+Let's try creating a gitignore file.
+
+37
+00:02:21,000 --> 00:02:25,990
+Now you can create the gitignore file a number of different ways. You can simply
+
+38
+00:02:26,000 --> 00:02:27,990
+open up your Text Editor and create it that way.
+
+39
+00:02:28,000 --> 00:02:29,990
+But I think because it has a dot
+
+40
+00:02:30,000 --> 00:02:33,990
+in front of it which makes it hard to see anywhere except from command line,
+
+41
+00:02:34,000 --> 00:02:36,990
+it's best to create the file from the command line.
+
+42
+00:02:37,000 --> 00:02:40,990
+So I'm going to use a Unix command nano which will bring up a text editor that I
+
+43
+00:02:41,000 --> 00:02:41,990
+can use to edit that.
+
+44
+00:02:42,000 --> 00:02:45,990
+Now if you're doing this on Windows, even though you maybe using a Unix-like
+
+45
+00:02:46,000 --> 00:02:48,990
+environment, you still may not have access to the nano program.
+
+46
+00:02:49,000 --> 00:02:50,990
+You can try and see if it works.
+
+47
+00:02:51,000 --> 00:02:53,990
+But if it doesn't work then you'll need to fallback using another Text Editor,
+
+48
+00:02:54,000 --> 00:02:57,990
+and Notepad is probably the simplest one that you know you're going to have a
+
+49
+00:02:58,000 --> 00:03:01,990
+Windows, this is the most basic Text Editor there is, and you can find that in
+
+50
+00:03:02,000 --> 00:03:05,990
+your applications, and then you just save the file as .gitignore and make sure
+
+51
+00:03:06,000 --> 00:03:10,990
+you have the Save As type field set to be All files, and then I'll make sure it
+
+52
+00:03:11,000 --> 00:03:14,990
+doesn't put a file extension at the end or just be .gitignore with nothing after
+
+53
+00:03:15,000 --> 00:03:16,990
+it, and you'll save that file in your Explore California directory.
+
+54
+00:03:17,000 --> 00:03:21,990
+Now since I'm on Unix, and I do have access to nano, I'm going to type nano and
+
+55
+00:03:22,000 --> 00:03:28,990
+then .gitignore. This is going to create a new file called gitignore in the
+
+56
+00:03:29,000 --> 00:03:32,990
+directory that I'm in right now which you can see is my project directory, so
+
+57
+00:03:33,000 --> 00:03:36,990
+let's create that new file there, and let's start by just putting in that we
+
+58
+00:03:37,000 --> 00:03:43,990
+wanted to ignore tempfile.txt, and then you can see down here it says Exit is
+
+59
+00:03:44,000 --> 00:03:47,990
+this character here followed by the X, that's the Ctrl key, so Ctlr+X, we'll
+
+60
+00:03:48,000 --> 00:03:52,990
+exit out of there, save changes, and we'll type a Y for Yes, file name to write
+
+61
+00:03:53,000 --> 00:03:55,990
+it to is gitignore, we'll hit Return to accept that.
+
+62
+00:03:56,000 --> 00:04:02,990
+And now if we do ls -la, we see gitignore file has been added.
+
+63
+00:04:03,000 --> 00:04:08,990
+So let's do a git status now, and now you can see that that temp file is no longer listed there.
+
+64
+00:04:09,000 --> 00:04:12,990
+So we're not seeing the temp file as being a file that's not tracked.
+
+65
+00:04:13,000 --> 00:04:16,990
+However, we have a new file there, which is gitignore.
+
+66
+00:04:17,000 --> 00:04:20,990
+Don't ignore that file--or you don't want to tell Git to ignore that--we want to commit
+
+67
+00:04:21,000 --> 00:04:22,990
+that file to our repository.
+
+68
+00:04:23,000 --> 00:04:26,990
+We want that to be included with the project, this is the project's gitignore
+
+69
+00:04:27,000 --> 00:04:31,990
+file, it's the files that may show up in the project that everyone is going to
+
+70
+00:04:32,000 --> 00:04:35,990
+want to ignore, so we're just always going to include it with the project we
+
+71
+00:04:36,000 --> 00:04:36,990
+will want to commit that.
+
+72
+00:04:37,000 --> 00:04:41,990
+And before we actually commit it, though, let's just try a few more things, nano,
+
+73
+00:04:42,000 --> 00:04:44,990
+let's open up gitignore again.
+
+74
+00:04:45,000 --> 00:04:49,990
+And this time I'm going to change it to just use the Asterisk, so
+
+75
+00:04:50,000 --> 00:04:51,990
+anything that is .txt.
+
+76
+00:04:52,000 --> 00:04:57,990
+Now if I did this, it's going to ignore not just that one file but any other file
+
+77
+00:04:58,000 --> 00:04:59,990
+in this directory that ends in .txt.
+
+78
+00:05:00,000 --> 00:05:04,990
+All the .html files would still be tracked, so let's just do Ctrl+X to save the
+
+79
+00:05:05,000 --> 00:05:10,990
+changes, type a Y and return, and that will save it, git status again, and you
+
+80
+00:05:11,000 --> 00:05:13,990
+can see that it still is ignoring that temp file.
+
+81
+00:05:14,000 --> 00:05:19,990
+If you want to do gitignore, we can put a Pound sign at the front that makes
+
+82
+00:05:20,000 --> 00:05:23,990
+it a comment, right? Comments are done like that.
+
+83
+00:05:24,000 --> 00:05:28,990
+Now I'll just save it again and git status. Now that rule is no longer in
+
+84
+00:05:29,000 --> 00:05:32,990
+effect, now it says I see two files there, I see our gitignore file, and I see
+
+85
+00:05:33,000 --> 00:05:34,990
+that temp file again. All right!
+
+86
+00:05:35,000 --> 00:05:38,990
+So before we actually committed let's add a few more entries to it now that we
+
+87
+00:05:39,000 --> 00:05:40,990
+kind of have a feel for how it works.
+
+88
+00:05:41,000 --> 00:05:44,990
+Now the only file that we really want to ignore at the moment is that temp file,
+
+89
+00:05:45,000 --> 00:05:49,990
+so let's do tempfile.txt, and let's add a few others in here.
+
+90
+00:05:50,000 --> 00:05:53,990
+And in the next movie we'll talk about the different kinds of things that you
+
+91
+00:05:54,000 --> 00:05:56,990
+should can ignore but I am going to give you some samples.
+
+92
+00:05:57,000 --> 00:06:00,990
+We're going to list the .DS_Store file that's a file that shows up on Macintosh,
+
+93
+00:06:01,000 --> 00:06:02,990
+that's something that the operating system uses.
+
+94
+00:06:03,000 --> 00:06:07,990
+We're going to tell it to ignore all files that end in .zip and .gz.
+
+95
+00:06:08,000 --> 00:06:12,990
+That's files that have been compressed into a single file, and let's say log files.
+
+96
+00:06:13,000 --> 00:06:16,990
+Let's say we have a directory called log and anything in that directory that
+
+97
+00:06:17,000 --> 00:06:19,990
+ends in .log we're going to ignore.
+
+98
+00:06:20,000 --> 00:06:24,990
+In addition to that, if we use log rotate on our log files it's going to append
+
+99
+00:06:25,000 --> 00:06:31,990
+a number at the end. So anything that is 0-9 at the end we also want to ignore.
+
+100
+00:06:32,000 --> 00:06:35,990
+Let's imagine that we have in our assets directory some Photoshop files that we
+
+101
+00:06:36,000 --> 00:06:40,990
+used to create the graphics. Well, we can tell to ignore all Photoshop files that are in there.
+
+102
+00:06:41,000 --> 00:06:45,990
+Let's say we have some videos, we can tell it to ignore all the videos, but
+
+103
+00:06:46,000 --> 00:06:47,990
+let's say there are some videos that we do want.
+
+104
+00:06:48,000 --> 00:06:50,990
+Well, let's tell what videos do we want it to track. We'll tell it
+
+105
+00:06:51,000 --> 00:06:59,990
+not to ignore videos/tour_*.mp4.
+
+106
+00:07:00,000 --> 00:07:05,990
+So anything that starts with tour_ and ends in .mp4 in the videos directory is
+
+107
+00:07:06,000 --> 00:07:07,990
+still going to be tracked.
+
+108
+00:07:08,000 --> 00:07:13,990
+Okay, so that gives you some idea of some of the kinds of ways that we can use this file.
+
+109
+00:07:14,000 --> 00:07:20,990
+Now here's my question for you, would log/archive/access.log be ignored?
+
+110
+00:07:21,000 --> 00:07:26,990
+Look there at the entry for log right here and decide whether you think that it
+
+111
+00:07:27,000 --> 00:07:27,990
+would be ignored or not.
+
+112
+00:07:28,000 --> 00:07:32,990
+The answer is no, it would not. This is only going to apply to files.
+
+113
+00:07:33,000 --> 00:07:38,990
+So this wild card is for characters that would be part of the file name, it would not
+
+114
+00:07:39,000 --> 00:07:41,990
+include archive and the slash in front of it.
+
+115
+00:07:42,000 --> 00:07:46,990
+So if you have folders nested inside of folders, you'll need to be careful about that.
+
+116
+00:07:47,000 --> 00:07:50,990
+So now that we've finished working with our file, I'm going to use Ctrl+X to
+
+117
+00:07:51,000 --> 00:07:54,990
+exit, Y to save my changes, and Return to save it to the same file name.
+
+118
+00:07:55,000 --> 00:07:58,990
+Let's do git status again, I'll just clear my screen, so we see our gitignore
+
+119
+00:07:59,000 --> 00:08:09,990
+file listed, let's now add that to our repository, git add .gitignore and then
+
+120
+00:08:10,000 --> 00:08:13,990
+git commit -m "Add . gitignore file". So there it is.
+
+121
+00:08:14,000 --> 00:08:19,990
+Now we do git status, and we don't see it, but as you can see our tempfile.txt
+
+122
+00:08:20,000 --> 00:08:22,990
+is still in there. It's just being ignored.
+
+123
+00:08:23,000 --> 00:08:33,000
+
+
