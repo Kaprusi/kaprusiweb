@@ -1,0 +1,364 @@
+1
+00:00:00,000 --> 00:00:03,990
+We're going to start out by setting up a remote repository, and the way we're going to do
+
+2
+00:00:04,000 --> 00:00:10,990
+that is by signing up for an account at GitHub, that's http://github.com.
+
+3
+00:00:11,000 --> 00:00:13,990
+GitHub is the most popular Git host.
+
+4
+00:00:14,000 --> 00:00:16,990
+There are other ones out there, but they're a great one, and I think you should start
+
+5
+00:00:17,000 --> 00:00:19,990
+with them first before you started exploring other options.
+
+6
+00:00:20,000 --> 00:00:22,990
+They offer free and inexpensive hosting plans.
+
+7
+00:00:23,000 --> 00:00:25,990
+Free is going to be great for our purposes when we're just getting started, but then we can also
+
+8
+00:00:26,000 --> 00:00:29,990
+upgrade to very inexpensive plans later on as our needs grow.
+
+9
+00:00:30,000 --> 00:00:33,990
+And one of the things that I love about GitHub is that not only do they provide reliable
+
+10
+00:00:34,000 --> 00:00:37,990
+hosting for our Git repository, but they also offer many other great features.
+
+11
+00:00:38,000 --> 00:00:42,990
+For example, charts and graphs that show the state of all the different branches and the
+
+12
+00:00:43,000 --> 00:00:47,990
+commits that have been made, or graphs showing the activity on a project over time.
+
+13
+00:00:48,000 --> 00:00:50,990
+Those kinds of bells and whistles make it a really nice choice.
+
+14
+00:00:51,000 --> 00:00:51,990
+Now here I'm on the GitHub site.
+
+15
+00:00:52,000 --> 00:00:56,990
+The design of the page may change over time, they certainly may update their web site after I record this.
+
+16
+00:00:57,000 --> 00:00:59,990
+The thing I want to look for is the Signup and Pricing button, there's one there, and
+
+17
+00:01:00,000 --> 00:01:00,990
+there is a big one down here.
+
+18
+00:01:01,000 --> 00:01:02,990
+They have a lot of different plans.
+
+19
+00:01:03,000 --> 00:01:08,990
+The one we're going to be picking is the Free for open source plan, which is $0 a month.
+
+20
+00:01:09,000 --> 00:01:12,990
+It's unlimited public repositories and unlimited public collaborators.
+
+21
+00:01:13,000 --> 00:01:17,990
+That means that once we push our code up there to the repository, everyone can see it.
+
+22
+00:01:18,000 --> 00:01:22,990
+People may not be looking at our repository, but if they wanted to, they can. It is browsable.
+
+23
+00:01:23,000 --> 00:01:24,990
+For open source projects that's ideal,
+
+24
+00:01:25,000 --> 00:01:29,990
+but if you want to have a private repository where you can put code that people can't see,
+
+25
+00:01:30,000 --> 00:01:32,990
+let's say you're building a project for a client, it might not be something that you
+
+26
+00:01:33,000 --> 00:01:36,990
+want everyone to be able to see the commits that you're making on behalf of that client.
+
+27
+00:01:37,000 --> 00:01:40,990
+In that case you would need a private repository, and that's what these other plans offer is
+
+28
+00:01:41,000 --> 00:01:44,990
+different levels of private repositories for you to use.
+
+29
+00:01:45,000 --> 00:01:47,990
+For now we can start with a free account unless you already know that you want to go with
+
+30
+00:01:48,000 --> 00:01:48,990
+one of those others.
+
+31
+00:01:49,000 --> 00:01:53,990
+So create a free account, and then we just have to enter some basic information.
+
+32
+00:01:54,000 --> 00:01:57,990
+Username that we want to use, the Email Address, our Password, and then our Password a second
+
+33
+00:01:58,000 --> 00:02:00,990
+time, and then Create an account.
+
+34
+00:02:01,000 --> 00:02:01,990
+That's really all there is to it.
+
+35
+00:02:02,000 --> 00:02:05,990
+Now it may send you an email and want you to confirm that you are who you say you are
+
+36
+00:02:06,000 --> 00:02:05,990
+and things like that.
+
+37
+00:02:06,000 --> 00:02:10,990
+Go ahead and follow all of those steps, and then sign in when you're finally all set up.
+
+38
+00:02:11,000 --> 00:02:15,990
+Now do give some thought to your username, because this username is the name the collaborators
+
+39
+00:02:16,000 --> 00:02:17,990
+on projects are going to see as well.
+
+40
+00:02:18,000 --> 00:02:21,990
+Once you've gotten your account created, and you've signed into it, the next thing we want
+
+41
+00:02:22,000 --> 00:02:24,990
+to do is we want to create a new repository.
+
+42
+00:02:25,000 --> 00:02:28,990
+In order to connect to the repository we have to create it first.
+
+43
+00:02:29,000 --> 00:02:32,990
+So on the GitHub site, create the new remote repository.
+
+44
+00:02:33,000 --> 00:02:33,990
+Create a New Repo is right here.
+
+45
+00:02:34,000 --> 00:02:38,990
+If I click that, it will come up and say, what do you want to call this repository?
+
+46
+00:02:39,000 --> 00:02:42,990
+Now you can call it anything you like, it should probably match your project name.
+
+47
+00:02:43,000 --> 00:02:44,990
+I'm going to call it explore_california.
+
+48
+00:02:45,000 --> 00:02:49,990
+A description here, so we can provide a description, it's completely optional.
+
+49
+00:02:50,000 --> 00:02:56,990
+Let's say Website for Explore California.
+
+50
+00:02:57,000 --> 00:02:59,990
+And then we have a choice, do we want to make it Public so that anyone can see what's in
+
+51
+00:03:00,000 --> 00:03:01,990
+it? We can still choose who can commit to it.
+
+52
+00:03:02,000 --> 00:03:05,990
+They can't necessarily have access to it but they can see it.
+
+53
+00:03:06,000 --> 00:03:08,990
+Or we can choose Private, which means that only we can do it.
+
+54
+00:03:09,000 --> 00:03:11,990
+If I choose Private, then I have to upgrade my account, because I have to go from a free
+
+55
+00:03:12,000 --> 00:03:14,990
+account to a Micro account, if I don't already have that.
+
+56
+00:03:15,000 --> 00:03:18,990
+If I choose Public, then you don't have to so that's what I'm going to pick.
+
+57
+00:03:19,000 --> 00:03:23,990
+Now the next option we have to decide is do we want to initialize this repository with a README.
+
+58
+00:03:24,000 --> 00:03:28,990
+If you remember back to when we first created our very first repository, the very first
+
+59
+00:03:29,000 --> 00:03:34,990
+step we did was we initialized the repository, and then we made our first commit.
+
+60
+00:03:35,000 --> 00:03:38,990
+So then at that first point we have our first commit in the repository, it's sort of the
+
+61
+00:03:39,000 --> 00:03:43,990
+very basic first step, and it's very common to create that first step by putting a README
+
+62
+00:03:44,000 --> 00:03:45,990
+file in there just to get things started.
+
+63
+00:03:46,000 --> 00:03:48,990
+So they're offering to do this for you automatically, so you can check that if you want.
+
+64
+00:03:49,000 --> 00:03:49,990
+I'm going to leave it unchecked.
+
+65
+00:03:50,000 --> 00:03:53,990
+It will also add a gitignore file for us if we want.
+
+66
+00:03:54,000 --> 00:03:57,990
+So we can add a gitignore file to the repository, and we can pick, and you can pick based on
+
+67
+00:03:58,000 --> 00:03:59,990
+what kind of project you're going to be doing.
+
+68
+00:04:00,000 --> 00:04:04,990
+It will pull from the repository of gitignore files that we looked at earlier and put those
+
+69
+00:04:05,000 --> 00:04:05,990
+in there for you.
+
+70
+00:04:06,000 --> 00:04:09,990
+So those are two examples of the kinds of nice features that GitHub gives you.
+
+71
+00:04:10,000 --> 00:04:13,990
+I'm not going to do either one of those though, I'm just going to click Create repository.
+
+72
+00:04:14,000 --> 00:04:17,990
+So GitHub created the remote repository on their servers, and then they provide us with
+
+73
+00:04:18,000 --> 00:04:20,990
+some helpful setup instructions.
+
+74
+00:04:21,000 --> 00:04:24,990
+So we've got Quick setup here, if you've done this kind of thing before, or the steps that
+
+75
+00:04:25,000 --> 00:04:27,990
+we want are down here, they give us two choices.
+
+76
+00:04:28,000 --> 00:04:32,990
+Either create a new repository on the command line or push an existing repository from the command line.
+
+77
+00:04:33,000 --> 00:04:37,990
+Since we have an existing repository, that's the step that we want to follow.
+
+78
+00:04:38,000 --> 00:04:41,990
+Now you'll notice here these steps are basically the steps that we followed early on in order
+
+79
+00:04:42,000 --> 00:04:47,990
+to create the basic first commit of our repository, and the last two steps are basically the same
+
+80
+00:04:48,000 --> 00:04:50,990
+thing once we have an existing repository.
+
+81
+00:04:51,000 --> 00:04:56,990
+It's also the same thing here, creating the init step that they offered to do for us on the last step.
+
+82
+00:04:57,000 --> 00:05:02,990
+So we've already done it, we could do it ourselves from the command line again, or we can have GitHub do it.
+
+83
+00:05:03,000 --> 00:05:07,990
+But the end result is that we have a repository and what we need to do then is git remote
+
+84
+00:05:08,000 --> 00:05:11,990
+add origin and then this address right here.
+
+85
+00:05:12,000 --> 00:05:14,990
+This address is also up here.
+
+86
+00:05:15,000 --> 00:05:20,990
+If you click HTTP, you'll see the exact one, HTTP, https, that's the one that you want
+
+87
+00:05:21,000 --> 00:05:25,990
+to make sure that you get, not the git@ github one, make sure that you get the HTTP one.
+
+88
+00:05:26,000 --> 00:05:29,990
+The other one would be if you were logging in via SSH instead of via HTTP.
+
+89
+00:05:30,000 --> 00:05:35,990
+Now don't worry about the exact syntax of this git remote add and git push, because
+
+90
+00:05:36,000 --> 00:05:38,990
+we're going to be talking about those in the next movies.
+
+91
+00:05:39,000 --> 00:05:49,000
+
+
