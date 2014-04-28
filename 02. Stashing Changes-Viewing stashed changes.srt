@@ -1,0 +1,164 @@
+1
+00:00:00,000 --> 00:00:04,990
+In last movie, we saw how to make an edit and then to put it into the stash.
+
+2
+00:00:05,000 --> 00:00:07,990
+In this movie, we're going to see how we can view those changes in the stash.
+
+3
+00:00:08,000 --> 00:00:12,990
+Once again, we're going to use the git stash command, that's going to be true for all of
+
+4
+00:00:13,000 --> 00:00:16,990
+the things that have to do with the stash, git stash followed by something else.
+
+5
+00:00:17,000 --> 00:00:22,990
+Before we did git stash save, this time we're going to do git stash list, and that's going
+
+6
+00:00:23,000 --> 00:00:25,990
+to show us a list of the things that are in the stash.
+
+7
+00:00:26,000 --> 00:00:33,990
+So here, there's one item in the stash, it's this line right here, stash @ sign, curly braces, 0.
+
+8
+00:00:34,000 --> 00:00:36,990
+This is the way to refer to this item in the stash.
+
+9
+00:00:37,000 --> 00:00:43,990
+Let's remember that, that's the syntax, stash @ sign, curly braces followed by a number.
+
+10
+00:00:44,000 --> 00:00:44,990
+The number here is going to be 0,
+
+11
+00:00:45,000 --> 00:00:49,990
+next one will be 1, then 2, then 3, then 4 and so on, so there're all going to be numbered.
+
+12
+00:00:50,000 --> 00:00:55,990
+Next it tells us on shorten_title, that's the branch that I was on, when I put it in the
+
+13
+00:00:56,000 --> 00:01:00,990
+stash because the stash is going to be accessible even when I switch branches.
+
+14
+00:01:01,000 --> 00:01:05,990
+So if I switch to my master branch, let's try that real quick, git checkout master, and
+
+15
+00:01:06,000 --> 00:01:07,990
+then I do git stash list.
+
+16
+00:01:08,000 --> 00:01:08,990
+It's still there.
+
+17
+00:01:09,000 --> 00:01:09,990
+The stash is available all the time.
+
+18
+00:01:10,000 --> 00:01:11,990
+I can always pull from it.
+
+19
+00:01:12,000 --> 00:01:15,990
+That makes it really handy, especially if you start to make a change on one branch,
+
+20
+00:01:16,000 --> 00:01:19,990
+and then you realize this isn't the branch that you wanted to commit those changes to,
+
+21
+00:01:20,000 --> 00:01:25,990
+you can put them in the stash, change your branches and then pull them back out of the stash again.
+
+22
+00:01:26,000 --> 00:01:30,990
+Back to the listing, it tells us what branch we were on, when we first made the stash,
+
+23
+00:01:31,000 --> 00:01:35,990
+and then it gives the description that we gave to it, so we'd know what where we stashing.
+
+24
+00:01:36,000 --> 00:01:41,990
+Now we can see more information about each of those stashes by saying, git stash show,
+
+25
+00:01:42,000 --> 00:01:43,990
+and then this name right here.
+
+26
+00:01:44,000 --> 00:01:49,990
+Now it's a bit awkward to type the name, I know it is. It's stash, @ sign, curly braces, zero,
+
+27
+00:01:50,000 --> 00:01:52,990
+curly braces. That's how we refer to it.
+
+28
+00:01:53,000 --> 00:01:56,990
+And it comes up and by default it shows us what's called diff stat.
+
+29
+00:01:57,000 --> 00:01:59,990
+This is a stat about what changed in this file.
+
+30
+00:02:00,000 --> 00:02:00,990
+So that's by default.
+
+31
+00:02:01,000 --> 00:02:05,990
+If we want to see more information, we really want to use the -p option, which is show it
+
+32
+00:02:06,000 --> 00:02:06,990
+to us as a patch.
+
+33
+00:02:07,000 --> 00:02:12,990
+A patch is a section of code that you can apply to different things to modify them and change them.
+
+34
+00:02:13,000 --> 00:02:16,990
+So this is basically saying, show us the edits.
+
+35
+00:02:17,000 --> 00:02:19,990
+The -p option, I'm going to clear the screen before I do it,
+
+36
+00:02:20,000 --> 00:02:24,990
+and what we see is the typical diff that we're used to showing us the sets of changes.
+
+37
+00:02:25,000 --> 00:02:27,990
+This is very similar to showing a commit.
+
+38
+00:02:28,000 --> 00:02:31,990
+So now that we know how to put things into the stash, we know how to look at the stash
+
+39
+00:02:32,000 --> 00:02:33,990
+and see what's in there.
+
+40
+00:02:34,000 --> 00:02:38,990
+Next thing is to be able to pull items out of the stash, and we'll do that in the next movie.
+
+41
+00:02:39,000 --> 00:02:49,000
+
+
